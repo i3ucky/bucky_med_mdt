@@ -66,13 +66,13 @@ CREATE TABLE `mdt_med_notes` (
 );
 
 INSERT INTO `med_types` (`id`, `label`, `amount`, `category`, `jailtime`) VALUES
-(1, '1.1 Mord', 0, 0, 0),
-(2, '1.2 Totschlag', 0, 0, 0),
-(3, '1.2 Totschlag mit Kutsche / Pferd', 0, 0, 0),
-(4, '1.2 Versuchte Tötung einer Amtsperson', 0, 0, 0),
-(5, '1.1 Versuchter Mord', 0, 0, 100),
-(6, '1.3 Tätlicher Angriff mit tödlicher Waffe auf Polizist', 0, 0, 0),
-(7, '1.3 Tätlicher Angriff mit tödlicher Waffe', 0, 0, 0),
+(1, 'Bruch Arm links', 0, 0, 0),
+(2, 'Bruch Arm rechts', 0, 0, 0),
+(3, 'Bruch Bein links', 0, 0, 0),
+(4, 'Bruch Bein rechts', 0, 0, 0),
+(5, 'Nasenbruch', 0, 0, 100),
+(6, 'Schusswunde Arm', 0, 0, 0),
+(7, 'Schusswunde Bein', 0, 0, 0),
 (8, '2.3 Selsbtjustiz', 0, 0, 0),
 (9, '1.3 Körperverletzung', 0, 0, 0),
 (10, '2.2 Erpressung', 0, 0, 0),
