@@ -87,7 +87,7 @@
                         <h3>AKTE #{{ report_selected.id}}</h3>
                         <h4 v-if="report_selected.title"> {{ report_selected.title }} </h4>
                         <h4 v-else-if="report_selected.title == null"> ... </h4>
-                        <h3>STRAFE</h3>
+                        <h3>KRANKHEITSVERLAUF</h3>
                         <h4 v-if="report_selected.charges == null"> ... </h4>
                         <span v-for="(amount, offense in report_selected.charges" :key="offense">
                             <h4>
@@ -166,7 +166,7 @@
                         </div>
 
                         <div v-else-if="report_new.focus == 'charges'">
-                            <h3 style="margin: 10px 0px">SUCHE STRAFEN</h3>
+                            <h3 style="margin: 10px 0px">SUCHE VERLETZUNGEN</h3>
                             <div v-if="offenses" style="max-height: 50vh; margin-right: 10px;">
                                 <el-form10 @keyup.enter.native>
                                     <input v-on:keyup.enter="AddCharge(offense.id)" v-model="report_new.charges_search" type="text" placeholder="Filter charges" style="width: 80%;" required>  
@@ -176,7 +176,7 @@
                                     <br />
                                 </span>
                             </div>
-                            <h4 v-else-if="offenses == false">Lade Strafen...</h4>
+                            <h4 v-else-if="offenses == false">Lade Verletzungen...</h4>
                         </div>
                     </div>
                 </div>

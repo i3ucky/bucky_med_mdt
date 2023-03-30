@@ -6,16 +6,6 @@ end)
 
 VORP = exports.vorp_inventory:vorp_inventoryApi()
 
-Citizen.CreateThread(function()
-	Citizen.Wait(2000)	
-	if Config.UsableItem then
-		VORP.RegisterUsableItem(""..Config.Item.."", function(data)
-			TriggerClientEvent('bucky_med_mdt:toggleVisibilty', data.source)
-		end)
-	end	
-end)
-
-
 RegisterCommand(""..Config.Command.."", function(source, args)
     local _source = source
 	local User = VORPCore.getUser(_source)
@@ -27,19 +17,25 @@ RegisterCommand(""..Config.Command.."", function(source, args)
         for k,v in pairs(Config.Jobs) do
             if job == v then
                 job_access = true
-				exports.ghmattimysql:execute("SELECT * FROM (SELECT * FROM `med_mdt_reports` ORDER BY `id` DESC LIMIT 6) sub ORDER BY `id` DESC", {}, function(reports)
+				exports.ghmattimysql:execute("SELECT * FROM (SELECT * FROM `mdt_med_reports` ORDER BY `id` DESC LIMIT 6) sub ORDER BY `id` DESC", {}, function(reports)
 					for r = 1, #reports do
 						reports[r].charges = json.decode(reports[r].charges)
 					end
-					exports.ghmattimysql:execute("SELECT * FROM (SELECT * FROM `med_mdt_warrants` ORDER BY `id` DESC LIMIT 6) sub ORDER BY `id` DESC", {}, function(warrants)
+					exports.ghmattimysql:execute("SELECT * FROM (SELECT * FROM `mdt_med_warrants` ORDER BY `id` DESC LIMIT 6) sub ORDER BY `id` DESC", {}, function(warrants)
 						for w = 1, #warrants do
 							warrants[w].charges = json.decode(warrants[w].charges)
 						end
-						exports.ghmattimysql:execute("SELECT * FROM (SELECT * FROM `med_mdt_notes` ORDER BY `id` DESC LIMIT 6) sub ORDER BY `id` DESC", {}, function(note)
+						exports.ghmattimysql:execute("SELECT * FROM (SELECT * FROM `mdt_med_notes` ORDER BY `id` DESC LIMIT 6) sub ORDER BY `id` DESC", {}, function(note)
 							for n = 1, #note do
 								note[n].charges = json.decode(note[n].charges)
 							end
 						TriggerClientEvent('bucky_med_mdt:toggleVisibilty', _source, reports, warrants, officername, job, jobgrade, note)
+						if Config.UsableItem then
+							VORP.RegisterUsableItem(""..Config.Item.."", function(data)
+									TriggerClientEvent('bucky_med_mdt:toggleVisibilty', _source, reports, warrants, officername, job, jobgrade, note)
+									VORP.CloseInv(data.source)
+							end)
+						end
 					end)
 				end)
 			end)
@@ -128,7 +124,7 @@ end)
 RegisterServerEvent("bucky_med_mdt:getOffenderDetailsById")
 AddEventHandler("bucky_med_mdt:getOffenderDetailsById", function(char_id)
     local usource = source
-	print(char_id)
+	--print(char_id)
 
     exports.ghmattimysql:execute('SELECT * FROM `characters` WHERE `charidentifier` = ?', {char_id}, function(result)
 

@@ -9,7 +9,7 @@ files {
     "ui/script.js",
     "ui/main.css",
     "ui/styles/police.css",
-    "ui/badges/police.png",
+    "ui/badges/medic.png",
     "ui/bg.jpg",
     "ui/mugshot.png"
 }
