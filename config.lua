@@ -16,7 +16,7 @@ Config.Item = "medbook" -- Itemname in Database
 Config.Jobs = {"doctor","doctor2","doctor3","doctor4","doctorsb","doctorbw"}
 
 --[[ Offices ]]--
-Config.UseOffice = true
+Config.UseOffice = false
 Config.Open = { 
 	['key'] = 0xD9D0E1C0, -- SPACE
 	['text'] = "~e~[SPACE] ~q~um Archiv zu öffnen",
