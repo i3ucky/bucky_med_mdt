@@ -6,5 +6,5 @@
 4. To bring up the mdt use /medmdt in chat (this can be changed in config) and itll bring up the mdt with an animation as if you were pulling out a notebook or notepad.
 
 ## Example
-![pic1]()
+![pic1](https://cdn.discordapp.com/attachments/1048675733658144808/1091054634694623312/image.png)
 
