@@ -4,6 +4,18 @@ TriggerEvent("getCore", function(core)
     VORPCore = core
 end)
 
+VORP = exports.vorp_inventory:vorp_inventoryApi()
+
+Citizen.CreateThread(function()
+	Citizen.Wait(2000)	
+	if Config.UsableItem then
+		VORP.RegisterUsableItem(""..Config.Item.."", function(data)
+			TriggerClientEvent('bucky_med_mdt:toggleVisibilty', data.source)
+		end)
+	end	
+end)
+
+
 RegisterCommand(""..Config.Command.."", function(source, args)
     local _source = source
 	local User = VORPCore.getUser(_source)
