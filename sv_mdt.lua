@@ -4,8 +4,6 @@ TriggerEvent("getCore", function(core)
     VORPCore = core
 end)
 
-VORP = exports.vorp_inventory:vorp_inventoryApi()
-
 RegisterCommand(""..Config.Command.."", function(source, args)
     local _source = source
 	local User = VORPCore.getUser(_source)
@@ -30,12 +28,7 @@ RegisterCommand(""..Config.Command.."", function(source, args)
 								note[n].charges = json.decode(note[n].charges)
 							end
 						TriggerClientEvent('bucky_med_mdt:toggleVisibilty', _source, reports, warrants, officername, job, jobgrade, note)
-						if Config.UsableItem then
-							VORP.RegisterUsableItem(""..Config.Item.."", function(data)
-									TriggerClientEvent('bucky_med_mdt:toggleVisibilty', _source, reports, warrants, officername, job, jobgrade, note)
-									VORP.CloseInv(data.source)
-							end)
-						end
+
 					end)
 				end)
 			end)
