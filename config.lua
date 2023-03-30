@@ -32,12 +32,12 @@ Config.Office = {
 
 --[[ Notifys ]]--
 Config.Notify = {  
-	['1'] = "Die Änderungen des Täters wurden gespeichert.", 
+	['1'] = "Die Änderungen  wurden gespeichert.", 
 	['2'] = "Die Änderungen des Berichts wurden gespeichert.",
 	['3'] = "Bericht wurde erfolgreich gelöscht.",
 	['4'] = "Ein neuer Bericht wurde eingereicht.",
-	['5'] = "Es wurde ein neuer Haftbefehl erstellt.", 
-	['6'] = "Der Haftbefehl wurde erfolgreich gelöscht.",
+	['5'] = "", 
+	['6'] = "",
 	['7'] = "Dieser Bericht kann nicht gefunden werden.",
 	['8'] = "Notiz gespeichert.",
 	['9'] = "Notiz gelöscht.",
