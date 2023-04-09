@@ -50,7 +50,7 @@
   text-align: left;
   user-select: none;
 }
-
+/*
 .recent-warrants {
   top: 25%;
   position: fixed; 
@@ -64,7 +64,7 @@
   text-align: left;
   user-select: none;
 }
-
+*/
 .recent-notes {
   top: 65%;
   position: fixed;
@@ -197,6 +197,8 @@
   text-align: left;
   user-select: none;
 }
+/*
+
 .new-warrant {
   position: fixed; 
   float: none; 
@@ -210,7 +212,7 @@
   text-align: left;
   user-select: none;
 }
-
+/*
 .new-warrant-results {
   top: 25%;
   padding-right: 5%;
@@ -237,7 +239,7 @@
   text-align: left;
   user-select: none;
 }
-
+/*
 .active-warrants-bottom {
   padding-top: 5%;
   padding-left: 12%;
@@ -245,6 +247,7 @@
   float: unset; 
   margin: 0 auto;
 }
+*/
 
 /* ------------------------------------------------------------- */
 .modal {
