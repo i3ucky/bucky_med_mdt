@@ -9,6 +9,7 @@
 ## How to use English translation 
 to use eng translation rename config.lua to config2.lua then go in to Ui folder and rename index.html to index2.html 
 then rename eng-config.lua to config.lua and un ui folder rename eng-index.html to index.html
+and run the eng-user_mdt not the user_mdt 
 
 ## Example
 ![pic1](https://cdn.discordapp.com/attachments/1048675733658144808/1091054634694623312/image.png)
