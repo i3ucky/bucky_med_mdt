@@ -121,9 +121,7 @@
                             <button v-if="report_selected.date" type="button"
                                 v-on:click="changePage('Submit Report'); report_new.charges = report_selected.charges; report_new.title = report_selected.title; report_new.incident = report_selected.incident;"
                                 id="report-details">COPY FILE</button>
-                            <button v-if="report_selected.date" type="button"
-                                v-on:click="changePage('Submit Warrant'); warrant_new.report_id = report_selected.id; warrant_new.char_id = report_selected.char_id; warrant_new.report_title = report_selected.title; warrant_new.name = report_selected.name; warrant_new.charges = report_selected.charges;">NEW
-                                ARREST WARRANT</button>
+  
                             <button type="button" style="margin-top: 5px;"
                                 v-on:click="changePage('Submit Report')">CREATE FILE</button>
                         </div>
@@ -429,147 +427,11 @@
                         </div>
                     </div>
 
-                    <div v-if="page == 'Warrants'">
-                        <h2 class="page-title">ACTIVE ARREST WARRANTS</h2>
-                        <el-form @keyup.enter.native>
-                            <input v-model="warrant_search" type="text" placeholder="Filter" required>
-                        </el-form>
-                        <br />
+                    
 
-                        <div class="active-warrants-bottom">
-                            <table v-if="filtered_warrants.length > 0" style="margin: 0 auto;">
-                                <tr>
-                                    <th>Name</th>
-                                    <th>File</th>
-                                    <th>Date of issue</th>
-                                    <th style="column-width: 140px;">Expired</th>
-                                </tr>
-                                <tr v-for="warrant in filtered_warrants"
-                                    v-on:click="changePage('Warrant Details'); warrant_selected = warrant;">
-                                    <td>{{warrant.name}}</td>
-                                    <td
-                                        style="overflow: hidden; text-overflow: ellipsis; max-width: 500px; max-height: 10px;">
-                                        {{warrant.report_title}}</td>
-                                    <td>{{warrant.date}}</td>
-                                    <td style="padding: 5px;">{{warrant.expire_time}}</td>
-                                </tr>
-                            </table>
-                            <h4 v-else-if="filtered_warrants.length == 0"
-                                style="text-align: center; font-size: 20px; font-weight: bold;"><br />No warranties
-                                found!</h4>
-                            <div style="bottom: 0%">
-                                <button v-on:click="changePage('Submit Warrant')" type="button"
-                                    style="margin-top: 30px;">NEW ARREST WARRANTY</button>
-                            </div>
-                        </div>
-                    </div>
+                   
 
-                    <div v-if="page == 'Submit Warrant'">
-                        <h2 class="page-title">NEW ARREST WARRANT</h2>
-
-                        <div class="new-warrant">
-                            <el-form @keyup.enter.native>
-                                <h3>FILE</h3>
-                                <h4 v-if="warrant_new.report_title" style="font-size: 14px;"> {{
-                                    warrant_new.report_title }} </h4>
-                                <h4 v-else-if="warrant_new.report_title == null"> ... </h4>
-                                <h3>NAME</h3>
-                                <h4 v-if="warrant_new.name" style="font-size: 14px;"> {{ warrant_new.name }} </h4>
-                                <h4 v-else-if="warrant_new.name == null"> ... </h4>
-                                <h3>NOTES</h3>
-                                <input v-model="warrant_new.notes" style="font-size: 14px; width: 400px;" type="text"
-                                    placeholder="Enter warrant notes (optional)" class="report-input" required>
-                                <h3>PENALTIES</h3>
-                                <h4 v-if="Object.keys(warrant_new.charges).length == 0"> ... </h4>
-                                <span v-else-if="Object.keys(warrant_new.charges).length > 0"
-                                    v-for="(amount, offense in warrant_new.charges" :key="offense">
-                                    <h4 style="font-size: 14px;">
-                                        {{ offense }} (x{{ amount }})
-                                    </h4>
-                                </span>
-                                <button v-if="warrant_new.report_id && warrant_new.char_id"
-                                    v-on:click="SubmitNewWarrant()" type="button"
-                                    style="margin-top: 20px">SUBMIT</button>
-                            </el-form>
-                        </div>
-
-                        <div class="new-warrant-results">
-                            <h3 v-if="report_results.results">SEARCH RESULTS</h3>
-                            <h3 v-else-if="report_results.query == ''">FILE SEARCH RESULTS</h3>
-                            <br />
-                            <el-form2 @keyup.enter.native>
-                                <input v-model="warrant_new.report_search" type="text" placeholder="Name or Incident ID"
-                                    required>
-                                <button v-on:click="WarrantReportSearch()" type="button">SEARCH</button>
-                            </el-form2>
-                            <div v-if="report_results.results" style="margin-right: 10px;">
-                                <h4 style="margin: 10px 1px 30px 1px;">Search results for '{{ warrant_new.report_search
-                                    }}'...</h4>
-                                <span v-if="report_results.results" v-for="result in report_results.results">
-                                    <h4 style="font-size: 12px; margin-bottom: 3px;"> {{ result.date }} - ID: {{
-                                        result.id }} </h4>
-                                    <button type="button"
-                                        v-on:click="warrant_new.report_title = result.title; warrant_new.name = result.name; warrant_new.charges = result.charges; warrant_new.report_id = result.id; warrant_new.char_id = result.char_id;"
-                                        style="margin-bottom: 10px; width: 100%; padding: unset;"> {{ result.title }}
-                                    </button>
-                                    <br />
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div v-if="page == 'Warrant Details'">
-                        <h2 class="page-title">ARREST WARRANT DETAILS</h2>
-                        <br />
-                        <div class="warrant details">
-                            <h3>DATE</h3>
-                            <h4 v-if="warrant_selected.date"> {{ warrant_selected.date }} </h4>
-                            <h4 v-else-if="warrant_selected.date == null"> ... </h4>
-                            <h3>NAME</h3>
-                            <h4 v-if="warrant_selected.name"
-                                v-on:click="OpenOffenderDetailsById(warrant_selected.char_id)"
-                                v-bind:class="getClass('clickable')"> {{ warrant_selected.name }} </h4>
-                            <h4 v-else-if="warrant_selected.name == null"> ... </h4>
-                            <h3>FILE</h3>
-                            <h4 v-if="warrant_selected.report_title"
-                                v-on:click="OpenReportById(warrant_selected.report_id)"
-                                v-bind:class="getClass('clickable')"> {{ warrant_selected.report_title }} </h4>
-                            <h4 v-else-if="warrant_selected.report_title == null"> ... </h4>
-                            <h3>NOTES</h3>
-                            <h4 v-if="warrant_selected.notes"> {{ warrant_selected.notes }} </h4>
-                            <h4 v-else-if="warrant_selected.notes == null"> ... </h4>
-                            <h3>PENALTIES</h3>
-                            <span v-for="(amount, offense) in warrant_selected.charges" :key="offense">
-                                <h4>
-                                    {{ offense }} (x{{ amount }})
-                                </h4>
-                            </span>
-                            <h3>CREATED</h3>
-                            <h4 v-if="warrant_selected.author"> {{ warrant_selected.author }} </h4>
-                            <h4 v-else-if="warrant_selected.author == null"> ... </h4>
-                            <h3>EXPIRED IN</h3>
-                            <h4 v-if="warrant_selected.expire_time"> {{ warrant_selected.expire_time }} </h4>
-                            <h4 v-else-if="warrant_selected.expire_time == null"> ... </h4>
-                            <br />
-                            <button type="button" v-on:click="changePage('Warrants')" id="warrants">BACK</button>
-                            <button type="button" v-on:click="DeleteSelectedWarrant()">DELETE</button>
-                        </div>
-                    </div>
-
-                    <div class="modal" v-if="modal == 'loading'">
-                        <div v-bind:class="getClass('modal-content')"
-                            style="width: 10%; height: auto; margin: 20% auto;">
-                            <p>Loading<span id="wait">.</span></p>
-                        </div>
-                    </div>
-
-                    <div id="notification" v-bind:class="getClass('notification')">
-                        <h4>{{notify}}</h4>
-                    </div>
-                </main>
-            </div>
-        </div>
-
+                        
 
         <script src="vue.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"
