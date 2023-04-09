@@ -15,7 +15,7 @@ Config.Jobs = {"doctor","doctor2","doctor3","doctor4","doctorsb","doctorbw"}
 Config.UseOffice = false
 Config.Open = { 
 	['key'] = 0xD9D0E1C0, -- SPACE
-	['text'] = "~e~[SPACE] ~q~um Archiv zu öffnen",
+	['text'] = "~e~[SPACE] ~q~to open archive",
 	} 
 Config.Office = {
     [1] = {
@@ -28,13 +28,13 @@ Config.Office = {
 
 --[[ Notifys ]]--
 Config.Notify = {  
-	['1'] = "Die Änderungen  wurden gespeichert.", 
-	['2'] = "Die Änderungen des Berichts wurden gespeichert.",
-	['3'] = "Bericht wurde erfolgreich gelöscht.",
-	['4'] = "Ein neuer Bericht wurde eingereicht.",
-	['5'] = "", 
+	['1'] = "The changes have been saved.",
+	['2'] = "The report changes have been saved.",
+	['3'] = "Report was deleted successfully.",
+	['4'] = "A new report has been submitted.",
+	['5'] = "",
 	['6'] = "",
-	['7'] = "Dieser Bericht kann nicht gefunden werden.",
-	['8'] = "Notiz gespeichert.",
-	['9'] = "Notiz gelöscht.",
+	['7'] = "This report cannot be found.",
+	['8'] = "Note saved.",
+	['9'] = "Note deleted.",
 	} 
