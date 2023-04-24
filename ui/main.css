@@ -50,7 +50,7 @@
   text-align: left;
   user-select: none;
 }
-/*
+
 .recent-warrants {
   top: 25%;
   position: fixed; 
@@ -64,7 +64,7 @@
   text-align: left;
   user-select: none;
 }
-*/
+
 .recent-notes {
   top: 65%;
   position: fixed;
@@ -133,13 +133,13 @@
 
 .search-offender {
   position: fixed; 
-  top: 27%;
-  left: 65%;
+  top: 55%;
+  left: 66%;
   right: 10%;
   width: 35%;
   max-width: 100%;
   overflow-y: auto;
-  height: auto;
+  height: 45%;
   text-align: left;
   user-select: none;
 }
@@ -197,8 +197,6 @@
   text-align: left;
   user-select: none;
 }
-/*
-
 .new-warrant {
   position: fixed; 
   float: none; 
@@ -212,7 +210,7 @@
   text-align: left;
   user-select: none;
 }
-/*
+
 .new-warrant-results {
   top: 25%;
   padding-right: 5%;
@@ -239,7 +237,7 @@
   text-align: left;
   user-select: none;
 }
-/*
+
 .active-warrants-bottom {
   padding-top: 5%;
   padding-left: 12%;
@@ -247,7 +245,6 @@
   float: unset; 
   margin: 0 auto;
 }
-*/
 
 /* ------------------------------------------------------------- */
 .modal {
