@@ -34,10 +34,26 @@
 .content el-form10 {
   left: 5%;
 }
+.course-of-illness {
+  position: relative;
+  
+  right: 25%;
+}
+.course-of-illness2 {
+  position: fixed;
+  padding-top: 10%;
+  right: 75%;
+}
 
+.course-of-illness3 {
+  position: fixed;
+  padding-top: 10%;
+  right: 75%;
+}
+/*HOM
 /*HOME*/
 .content h2 {
-  padding-left: 12%;
+  padding-right: 1%;
 
 font-family: 'Special Elite', cursive;
   font-style: medium;
