@@ -1,49 +1,3 @@
-CREATE TABLE `user_med_mdt` (
-	`id` int(11) NOT NULL AUTO_INCREMENT,
-	`char_id` int(11) DEFAULT NULL,
-	`notes` varchar(255) DEFAULT NULL,
-	`mugshot_url` varchar(255) DEFAULT NULL,
-	`bail` bit DEFAULT NULL,
-
-	PRIMARY KEY (`id`)
-);
-
-CREATE TABLE `user_med_convictions` (
-	`id` int(11) NOT NULL AUTO_INCREMENT,
-	`char_id` int(11) DEFAULT NULL,
-	`offense` varchar(255) DEFAULT NULL,
-	`count` int(11) DEFAULT NULL,
-	
-	PRIMARY KEY (`id`)
-);
-
-CREATE TABLE `mdt_med_reports` (
-	`id` int(11) NOT NULL AUTO_INCREMENT,
-	`char_id` int(11) DEFAULT NULL,
-	`title` varchar(255) DEFAULT NULL,
-	`incident` longtext DEFAULT NULL,
-    `charges` longtext DEFAULT NULL,
-    `author` varchar(255) DEFAULT NULL,
-	`name` varchar(255) DEFAULT NULL,
-    `date` varchar(255) DEFAULT NULL,
-
-	PRIMARY KEY (`id`)
-);
-
-CREATE TABLE `mdt_med_warrants` (
-	`id` int(11) NOT NULL AUTO_INCREMENT,
-	`name` varchar(255) DEFAULT NULL,
-	`char_id` int(11) DEFAULT NULL,
-	`report_id` int(11) DEFAULT NULL,
-	`report_title` varchar(255) DEFAULT NULL,
-	`charges` longtext DEFAULT NULL,
-	`date` varchar(255) DEFAULT NULL,
-	`expire` varchar(255) DEFAULT NULL,
-	`notes` varchar(255) DEFAULT NULL,
-	`author` varchar(255) DEFAULT NULL,
-
-	PRIMARY KEY (`id`)
-);
 
 CREATE TABLE IF NOT EXISTS `med_types` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -55,32 +9,65 @@ CREATE TABLE IF NOT EXISTS `med_types` (
        PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `mdt_med_notes` (
-	`id` int(11) NOT NULL AUTO_INCREMENT,
-	`title` varchar(255) DEFAULT NULL,
-	`incident` longtext DEFAULT NULL,
-    `author` varchar(255) DEFAULT NULL,
-    `date` varchar(255) DEFAULT NULL,
-
-	PRIMARY KEY (`id`)
-);
-
 INSERT INTO `med_types` (`id`, `label`, `amount`, `category`, `jailtime`) VALUES
-(1, 'fracture left arm', 0, 0, 0),
-(2, 'break right arm', 0, 0, 0),
-(3, 'fracture left leg', 0, 0, 0),
-(4, 'Right leg fracture', 0, 0, 0),
-(5, 'Break Nose', 0, 0, 0),
-(6, 'Gunshot Arm', 0, 0, 0),
-(7, 'Gunshot Leg', 0, 0, 0),
-(8, 'Bullet Wound Torso', 0, 0, 0),
-(9, 'Gunshot Lower Body', 0, 0, 0),
-(10, 'Head Injury', 0, 0, 0),
-(11, 'cold', 0, 0, 0),
-(12, 'cholera', 0, 0, 0),
-(13, 'malaria', 0, 0, 0),
-(14, 'cut', 0, 0, 0),
-(15, 'bruise', 0, 0, 0),
-(16, 'skin disease', 0, 0, 0),
-(17, 'general pain symptoms', 0, 0, 0),
-(18, 'other complaints', 0, 0, 0);
+(1,'Break Nose', 0, 0, 0),
+(2,'Break arm', 0, 0, 0),
+(3,'Bruise', 0, 0, 0),
+(4,'Broken Ribs', 0, 0, 0),
+(5,'Brused Ribs', 0, 0, 0),
+(6,'Bullet Wound Torso', 0, 0, 0),
+(7,'Camp Fever', 0, 0, 0),
+(8,'Cholera', 0, 0, 0),
+(9,'Cold', 0, 0, 0),
+(10,'Concussion', 0, 0, 0),
+(11,'Cut', 0, 0, 0),
+(12,'Drowning', 0, 0, 0),
+(13,'Fracture arm', 0, 0, 0),
+(14,'Fracture leg', 0, 0, 0),
+(15,'General pain symptoms', 0, 0, 0),
+(16,'Gunshot Arm', 0, 0, 0),
+(17,'Gunshot Leg', 0, 0, 0),
+(18,'Gunshot Lower Body', 0, 0, 0),
+(19,'Head Injury', 0, 0, 0),
+(20,'Malaria', 0, 0, 0),
+(21,'Other complaints', 0, 0, 0),
+(22,'Skin disease ', 0, 0, 0);
+ 
+
+
+,
+
+
+
+
+
+
+
+
+
+
+(23,
+
+'fracture left arm', 0, 0, 0),
+'break right arm', 0, 0, 0),
+'fracture left leg', 0, 0, 0),
+'Right leg fracture', 0, 0, 0),
+'Break Nose', 0, 0, 0),
+'Gunshot Arm', 0, 0, 0),
+'Gunshot Leg', 0, 0, 0),
+'Bullet Wound Torso', 0, 0, 0),
+'Gunshot Lower Body', 0, 0, 0),
+ 'Head Injury', 0, 0, 0),
+ 'cold', 0, 0, 0),
+ 'cholera', 0, 0, 0),
+ 'malaria', 0, 0, 0),
+ 'cut', 0, 0, 0),
+ 'bruise', 0, 0, 0),
+ 'skin disease', 0, 0, 0),
+ 'general pain symptoms', 0, 0, 0),
+ 'other complaints', 0, 0, 0),
+ 'Broken Ribs', 0, 0, 0),
+ 'brused Ribs', 0, 0, 0),
+ 'Camp Fever', 0, 0, 0),
+ 'Concussion', 0, 0, 0),
+ 'Drowning', 0, 0, 0);

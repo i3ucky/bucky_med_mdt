@@ -9,7 +9,7 @@ Config = {}
 Config.Command = "medmdt"
 
 --[[ Allowed Jobs ]]--
-Config.Jobs = {"doctor","doctor2","doctor3","doctor4","doctorsb","doctorbw"}
+Config.Jobs = {"doctor","pinkerton"}
 
 --[[ Offices ]]--
 Config.UseOffice = false
@@ -18,12 +18,7 @@ Config.Open = {
 	['text'] = "~e~[SPACE] ~q~to open archive",
 	} 
 Config.Office = {
-    [1] = {
-        coords={-304.10, 829.9, 120.0}, -- Valentine
-    },
-    [2] = {
-        coords={-325.81, 819.8, 118.0}, -- Valentine 2
-    }
+
 }
 
 --[[ Notifys ]]--

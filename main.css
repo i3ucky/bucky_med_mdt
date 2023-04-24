@@ -50,7 +50,7 @@
   text-align: left;
   user-select: none;
 }
-/*
+
 .recent-warrants {
   top: 25%;
   position: fixed; 
@@ -64,7 +64,7 @@
   text-align: left;
   user-select: none;
 }
-*/
+
 .recent-notes {
   top: 25%;
   position: fixed;
@@ -197,7 +197,6 @@
   text-align: left;
   user-select: none;
 }
-/*
 .new-warrant {
   position: fixed; 
   float: none; 
