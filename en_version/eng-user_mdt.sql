@@ -65,6 +65,9 @@ CREATE TABLE `mdt_med_notes` (
 	PRIMARY KEY (`id`)
 );
 
+INSERT INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`, `metadata`, `desc`) VALUES ('medbook', 'MDT book', 10, 1, 'item_standard', 1,'{}', 'nice item');
+
+
 INSERT INTO `med_types` (`id`, `label`, `amount`, `category`, `jailtime`) VALUES
 (1,'Break Nose', 0, 0, 0),
 (2,'Break arm', 0, 0, 0),
