@@ -49,7 +49,7 @@ end)
 
 local VORPInv = exports.vorp_inventory:vorp_inventoryApi()
 
-VORPInv.RegisterUsableItem(Config.book, function(data, args)
+VORPInv.RegisterUsableItem(""..Config.Item.."", function(data, args)
 	local _source = data.source 
 	TriggerEvent("bucky_openmdt",_source)
 end)
