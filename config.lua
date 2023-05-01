@@ -8,6 +8,9 @@ Config = {}
 --[[ Command ]]--
 Config.Command = "medmdt"
 
+--[[ Command ]]--
+Config.Item = "medbook"
+
 --[[ Allowed Jobs ]]--
 Config.Jobs = {"doctor","doctor2","doctor3","doctor4","doctorsb","doctorbw"}
 

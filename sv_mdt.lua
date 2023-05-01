@@ -39,6 +39,51 @@ RegisterCommand(""..Config.Command.."", function(source, args)
         end
 end)
 
+local VORPInv = exports.vorp_inventory:vorp_inventoryApi()
+
+VORPInv.RegisterUsableItem(""..Config.Item.."", function(data, args)
+    local _source = data.source 
+    TriggerEvent("bucky_openmdt",_source)
+end)
+
+
+RegisterServerEvent("bucky_openmdt")
+AddEventHandler("bucky_openmdt",function(source, args)
+    local _source = source
+    local User = VORPCore.getUser(_source)
+    local Character = User.getUsedCharacter
+    local job = Character.job
+    local jobgrade = Character.jobGrade
+    local officername = (Character.firstname.. " " ..Character.lastname)
+    local job_access = false
+    for k,v in pairs(Config.Jobs) do
+        if job == v then
+            job_access = true
+            exports.ghmattimysql:execute("SELECT * FROM (SELECT * FROM `mdt_med_reports` ORDER BY `id` DESC LIMIT 6) sub ORDER BY `id` DESC", {}, function(reports)
+                for r = 1, #reports do
+                    reports[r].charges = json.decode(reports[r].charges)
+                end
+                exports.ghmattimysql:execute("SELECT * FROM (SELECT * FROM `mdt_med_warrants` ORDER BY `id` DESC LIMIT 6) sub ORDER BY `id` DESC", {}, function(warrants)
+                    for w = 1, #warrants do
+                        warrants[w].charges = json.decode(warrants[w].charges)
+                    end
+                    exports.ghmattimysql:execute("SELECT * FROM (SELECT * FROM `mdt_med_notes` ORDER BY `id` DESC LIMIT 6) sub ORDER BY `id` DESC", {}, function(note)
+                        for n = 1, #note do
+                            note[n].charges = json.decode(note[n].charges)
+                        end
+                    TriggerClientEvent('bucky_med_mdt:toggleVisibilty', _source, reports, warrants, officername, job, jobgrade, note)
+                end)
+            end)
+        end)
+        end
+    end
+    if job_access == false then
+
+        return false
+    end
+end)
+
+
 RegisterServerEvent("bucky_med_mdt:getOffensesAndOfficer")
 AddEventHandler("bucky_med_mdt:getOffensesAndOfficer", function()
 	local usource = source
